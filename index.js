@@ -16,7 +16,13 @@ const app = express()
 app.get('/api/task',(req,res)=>res.json(task))
 
 app.get('/api/task/:id',(req,res)=>{
-    res.json(task.filter(task => task.id === parseInt(req.params.id)))
+    let find = task.some(task => task.id === parseInt(req.params.id)) 
+    if(find){
+        res.json(task.filter(task => task.id === parseInt(req.params.id)))
+    }
+    else{
+        res.status(400).json({msg:`not found data on this params ${req.params.id}`})
+    }
 })
 
 // app.get('/',(req,res)=>{
