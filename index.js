@@ -3,6 +3,13 @@ const path = require('path')
 const task = require('./tesk')
 const app = express()
 
+
+//create function for use middleware 
+const store = (req,res,next)=>{
+    console.log("this middleware")
+    next()
+}
+app.use(store)
 //api
 app.get('/api/task',(req,res)=>res.json(task))
 
