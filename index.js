@@ -1,29 +1,16 @@
 const express = require('express')
 const path = require('path')
+const task = require('./tesk')
 const app = express()
 
 //api
-const task = [
-    {
-        id:1,
-        name:'homework',
-        disscrip:'make homework'
-    },
-    {
-        id:2,
-        name:'work',
-        disscrip:'make work for money'
-    }
-]
-app.get('/api/task',(req,res)=>{
-
-})
+app.get('/api/task',(req,res)=>res.json(task))
 
 // app.get('/',(req,res)=>{
 //     res.sendFile(path.join(__dirname,'public','index.html'))
 // })
 
-//set static path
+//set static path for open file
 app.use(express.static(path.join(__dirname,'public')))
 const port = process.env.PORT || 5000;
 
